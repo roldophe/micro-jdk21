@@ -1,0 +1,22 @@
+CREATE TABLE customers (
+    customer_id  SERIAL PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    mobile_phone VARCHAR(20) UNIQUE NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    created_by VARCHAR(200) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_by VARCHAR(200)
+);
+
+CREATE TABLE accounts (
+    account_id SERIAL PRIMARY KEY,
+    customer_id INTEGER NOT NULL REFERENCES customers(customer_id),
+    account_number VARCHAR(20) UNIQUE NOT NULL,
+    account_type VARCHAR(200) NOT NULL,
+    branch_address VARCHAR(200) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    created_by VARCHAR(200) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_by VARCHAR(200)
+);

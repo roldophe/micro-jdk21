@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+    h2:
+      console:
+        enabled: true
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    enable:
+      process: false   # ❌ Disables process metrics (prevents crashes in Docker)
+    system:
+      enabled: false   # ❌ Disables system metrics (prevents Docker errors)
+  health:
+    defaults:
+      enabled: true    # ✅ Keeps default health checks enabled
+    cgroup:
+      enabled: false   # ❌ Prevents Actuator from reading cgroup limits
+  observations:
+    enabled: true      # ✅ Keeps observations enabled for monitoring tools

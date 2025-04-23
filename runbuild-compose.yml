@@ -1,0 +1,49 @@
+services:
+  accounts:
+    build:
+      context: ./accounts
+      dockerfile: Dockerfile
+    image: radomkhoem/accounts:jdk21
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+      - rdm-bank
+
+  cards:
+    build:
+      context: ./cards
+      dockerfile: Dockerfile
+    image: radomkhoem/cards:jdk21
+    container_name: cards-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+      - rdm-bank
+
+  loans:
+    build:
+      context: ./loans
+      dockerfile: Dockerfile
+    image: radomkhoem/loans:jdk21
+    container_name: loans-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+      - rdm-bank
+
+networks:
+  rdm-bank:
+    driver: bridge
