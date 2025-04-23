@@ -39,7 +39,7 @@ You can either use `docker-compose` to build or build them manually.
 ### ✅ Option 1: Auto Build & Run
 
 ```bash
-docker-compose -f runbuild-compose.yml up --build
+docker compose -f docker-compose.build.yml up --build
 ```
 
 > This uses `build:` in `docker-compose.yml` and runs all services.
@@ -53,7 +53,7 @@ docker build -t radomkhoem/cards-jdk21 ./cards
 docker build -t radomkhoem/loans-jdk21 ./loans
 
 # Run services
-docker-compose -f runbuild-compose.yml up
+docker compose -f docker-compose.yml up
 ```
 
 ---
